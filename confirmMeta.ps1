@@ -50,11 +50,11 @@ logging -msg "hoge"
 $clonepath = Select-Folder -$Description "クローンしたforce-appディレクトリを指定してください。"
 $metapath = Select-Folder -$Description "メタデータのforce-appディレクトリを指定してください。"
 #NULLチェック、ディレクトリ指定してるかどうか
-if( $clonepath -eq $null ) {
+if( $null -eq $clonepath ) {
     Write-Host "クローンのパスを指定してください。"
     exit
 }
-if( $metapath -eq $null ) {
+if( $null -eq $metapath ) {
     Write-Host "メタデータのパスを指定してください。"
     exit
 }
