@@ -1,18 +1,18 @@
-﻿$logger
+﻿$script:logger
 #Logging
 function logging( [string]$msg ) {
     #logのメッセージ
     $log = Get-Date -Format "yyyy/MM/dd HH:mm:ss.fff"
-    $log = $log + " [" + $msg + "]"
+    $log = $log + " " + $msg
     #logファイル無かったら作る
     if( $null -eq $logger ) {
         $parm = Get-Date -Format "yyyyMMdd_HH.mm.ss.fff"
         $logname = "LOG" + "_" + $parm + ".log"
-        $logger = New-Item $logname -Force
+        $script:logger = New-Item $logname -Force
     }
     #log出力
-    Write-Output $log | Out-File -FilePath $logger -Encoding Default -append
-    return $log
+    Write-Output $log | Out-File -FilePath $script:logger -Encoding Default -append
+#    return $log
 }
 #ファイル処理する関数だよ
 function doCopy( $1 ) {
@@ -21,9 +21,10 @@ function doCopy( $1 ) {
     #dupが無いファイルがあるか確認するよ
     if( Test-Path $sourceFile ) {
         #ファイルコピー
-        Copy-Item $1 $sourceFile
+        Copy-Item $1.FullName $sourceFile
         #loggingする
-        logging "COPY : "$1 + " to " + $sourceFile
+        $msg = "COPY : " + $1.FullName + " TO " + $sourceFile
+        logging -msg $msg
     }
 }
 #フォルダ指定するダイアログ表示
@@ -34,6 +35,7 @@ function Select-Folder(
 {
     Add-Type -assemblyName System.Windows.Forms
     $dialog = New-Object System.Windows.Forms.FolderBrowserDialog
+    $dialog.SelectedPath = (Get-Item $PWD).FullName
     $dialog.Description = $Description
     #[新しいフォルダ]ボタンを表示するか？
     $dialog.ShowNewFolderButton = $ShowNewFolder
@@ -44,21 +46,61 @@ function Select-Folder(
       return $dialog.SelectedPath
     }
 }
+#Meta側で削除されたファイルを探し出す
+function findDelete( $cloneFile, $clonePath, $metaPath ) {
+    #Clone側のファイル名を取り出してMeta側のパスにくっつけて、存在をみる
+    $metaFileName = Join-Path $metaPath $cloneFile.Name
+    #Meta側にファイルがなければ画面とログに出力
+    if( !(Test-Path $metaFileName) ) {
+        $msg = "WARNING!!! [" + $cloneFile.FullName + "] is not exsits!!"
+        Write-Host $msg -ForegroundColor Red
+        logging -msg $msg
+    }
+}
+
 #logging start
-logging -msg "hoge"
+logging -msg "Start!"
 #ダイアログ表示
 $clonepath = Select-Folder -$Description "クローンしたforce-appディレクトリを指定してください。"
 $metapath = Select-Folder -$Description "メタデータのforce-appディレクトリを指定してください。"
 #NULLチェック、ディレクトリ指定してるかどうか
 if( $null -eq $clonepath ) {
-    Write-Host "クローンのパスを指定してください。"
+    Write-Host "クローンのパスを指定してください。" -ForegroundColor Red
+    logging -msg "EXCEPTION! NOT CLONE PATH"
     exit
 }
 if( $null -eq $metapath ) {
-    Write-Host "メタデータのパスを指定してください。"
+    Write-Host "メタデータのパスを指定してください。" -ForegroundColor Red
+    logging -msg "EXCEPTION! NOT META PATH"
     exit
 }
+logging -msg "Copy Dup!!"
 #まずdupファイルがあればdup無しにコピーする
-$files = Get-ChildItem -Path $metapath -Recurse -Filter *.dup
+$files = Get-ChildItem -Path $metapath -Recurse -Filter *.dup -File
 #取り出したdupを回す。
-$files | ForEach-Object -Begin {"### Go! ###"} -Process {doCopy $_} -End {"### Finish! ###"}
+$files | ForEach-Object -Process {doCopy $_}
+
+#削除されちゃったファイルを探す
+logging -msg "Find DeletedFile!!"
+$files = Get-ChildItem -Path $clonepath -Recurse -File
+$files | ForEach-Object -Process {findDelete $_ $clonepath $metaPath }
+#コピーを実行するか決める
+#■変数格納箇所
+$CHESEN = "コピーを実行しますか。"
+$CHETIT = "最終確認"
+$CHEKIN = "OKCancel"
+$CHEICO = "None"
+$CHEBUT = "button1"
+Add-Type -Assembly System.Windows.Forms
+$result = [System.Windows.Forms.MessageBox]::Show("$CHESEN","$CHETIT","$CHEKIN","$CHEICO","$CHEBUT")
+#メッセージボックスのハンドリング
+if( 'OK' -eq $result ){
+    Write-Output "コピーを開始します。"
+    #metaをcloneにコピー
+    $dest = Split-Path $clonepath -Parent
+    Copy-Item $metapath -Destination $dest -Recurse -Exclude "*.dup" -Force
+} else {
+    [System.Windows.Forms.MessageBox]::show("コピーを中止しました。","最終確認","OK","None","button1")
+    Write-Output "コピーを中止しました。"
+}
+Write-Output "処理終了"
