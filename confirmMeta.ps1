@@ -1,4 +1,5 @@
 ﻿$script:logger
+
 #Logging
 function logging( [string]$msg ) {
     #logのメッセージ
@@ -13,6 +14,16 @@ function logging( [string]$msg ) {
     #log出力
     Write-Output $log | Out-File -FilePath $script:logger -Encoding Default -append
 #    return $log
+}
+#指定した文字列以降を取り出すよ
+function getLastStr {
+    param (
+        [string]$sourceStr,
+        [string]$findStr
+    )
+    $findInx = $sourceStr.indexOf( $findStr )
+    $resultStr = $sourceStr.Substring( $findInx + $findStr.Length )
+    return $resultStr
 }
 #ファイル処理する関数だよ
 function doCopy( $1 ) {
@@ -48,8 +59,10 @@ function Select-Folder(
 }
 #Meta側で削除されたファイルを探し出す
 function findDelete( $cloneFile, $clonePath, $metaPath ) {
+    #force-appまでで変換しとく
+    $lastStr = getLastStr $cloneFile.FullName "force-app"
     #Clone側のファイル名を取り出してMeta側のパスにくっつけて、存在をみる
-    $metaFileName = Join-Path $metaPath $cloneFile.Name
+    $metaFileName = Join-Path $metaPath $lastStr
     #Meta側にファイルがなければ画面とログに出力
     if( !(Test-Path $metaFileName) ) {
         $msg = "WARNING!!! [" + $cloneFile.FullName + "] is not exsits!!"
@@ -60,9 +73,47 @@ function findDelete( $cloneFile, $clonePath, $metaPath ) {
 
 #logging start
 logging -msg "Start!"
+#DevHubに接続してSFDXプロジェクトに変換するまでやってみる、ほんとは結果処理したいけどBATファイルなので無理。。。BATの中解析したけど無理。。。
+#package.xmlが存在することを確認する
+if( !(Test-Path "./package.xml") ) {
+    $msg = "FATAL!!! package.xml is not Exsits!!"
+    Write-Host $msg -ForegroundColor Red
+    logging -msg $msg
+    Exit-PSHostProcess
+}
+#sfdx-project.jsonが存在することを確認する
+if( !(Test-Path "./sfdx-project.json") ) {
+    $msg = "FATAL!!! sfdx-project.json is not Exsits!!"
+    Write-Host $msg -ForegroundColor Red
+    logging -msg $msg
+    Exit-PSHostProcess
+}
+#configディレクトリが存在することを確認する
+if( !(Test-Path "./config") ) {
+    $msg = "FATAL!!! config Directry is not Exsits!!"
+    Write-Host $msg -ForegroundColor Red
+    logging -msg $msg
+    Exit-PSHostProcess
+}
+#メタデータを取得する
+Start-Process sfdx -ArgumentList "force:mdapi:retrieve -s -r ./mdapipkg -k ./package.xml -u DevHub" -Wait
+#解凍する
+Expand-Archive -Path "./mdapipkg/unpackaged.zip" -DestinationPath "./mdapipkg" -Force
+#プロジェクトに変換する
+Start-Process sfdx -ArgumentList "force:mdapi:convert -r ./mdapipkg" -Wait
+#force-appディレクトリが存在することを確認する
+if( !(Test-Path "./force-app") ) {
+    $msg = "FATAL!!! convert is not Success!!"
+    Write-Host $msg -ForegroundColor Red
+    logging -msg $msg
+    Exit-PSHostProcess
+}
+#コンバートした結果のディレクトリを格納
+$metapath = (Convert-Path "./force-app")
+
 #ダイアログ表示
 $clonepath = Select-Folder -$Description "クローンしたforce-appディレクトリを指定してください。"
-$metapath = Select-Folder -$Description "メタデータのforce-appディレクトリを指定してください。"
+#$metapath = Select-Folder -$Description "メタデータのforce-appディレクトリを指定してください。"
 #NULLチェック、ディレクトリ指定してるかどうか
 if( $null -eq $clonepath ) {
     Write-Host "クローンのパスを指定してください。" -ForegroundColor Red
