@@ -150,8 +150,11 @@ if( 'OK' -eq $result ){
     #metaをcloneにコピー
     $dest = Split-Path $clonepath -Parent
     Copy-Item $metapath -Destination $dest -Recurse -Exclude "*.dup" -Force
+    logging -msg "Copy complete!"
 } else {
     [System.Windows.Forms.MessageBox]::show("コピーを中止しました。","最終確認","OK","None","button1")
     Write-Output "コピーを中止しました。"
+    logging -msg "Copy abort!"
 }
 Write-Output "処理終了"
+logging -msg "Completed!!"
