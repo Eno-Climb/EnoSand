@@ -2,3 +2,4 @@
 *.zip
 objects/
 mdapipkg/
+.sfdx/
