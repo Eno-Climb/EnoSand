@@ -73,7 +73,7 @@ function findDelete( $cloneFile, $clonePath, $metaPath ) {
 
 #logging start
 logging -msg "Start!"
-#DevHubに接続してSFDXプロジェクトに変換するまでやってみる、ほんとは結果処理したいけどBATファイルなので無理。。。BATの中解析したけど無理。。。
+#DevHubに接続してSFDXプロジェクトに変換するまでやってみる、ほんとはDevHubから処理したいけどBATファイルなので無理。。。BATの中解析したけど無理。。。
 #package.xmlが存在することを確認する
 if( !(Test-Path "./package.xml") ) {
     $msg = "FATAL!!! package.xml is not Exsits!!"
@@ -95,7 +95,7 @@ if( !(Test-Path "./config") ) {
     logging -msg $msg
     Exit-PSHostProcess
 }
-#メタデータを取得する
+#メタデータを取得する、BATファイルなので返り値みれず。。。ほんとは処理したい
 Start-Process sfdx -ArgumentList "force:mdapi:retrieve -s -r ./mdapipkg -k ./package.xml -u DevHub" -Wait
 #解凍する
 Expand-Archive -Path "./mdapipkg/unpackaged.zip" -DestinationPath "./mdapipkg" -Force
@@ -118,11 +118,6 @@ $clonepath = Select-Folder -$Description "クローンしたforce-appディレ�
 if( $null -eq $clonepath ) {
     Write-Host "クローンのパスを指定してください。" -ForegroundColor Red
     logging -msg "EXCEPTION! NOT CLONE PATH"
-    exit
-}
-if( $null -eq $metapath ) {
-    Write-Host "メタデータのパスを指定してください。" -ForegroundColor Red
-    logging -msg "EXCEPTION! NOT META PATH"
     exit
 }
 logging -msg "Copy Dup!!"
