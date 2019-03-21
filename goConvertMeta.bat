@@ -1,6 +1,6 @@
 ﻿@echo off
-echo DevHubから取り出したMetaデータをコンバートします。
+echo Go convert DevHub to Git Repository.
 powershell -NoProfile -ExecutionPolicy Unrestricted .\confirmMeta.ps1
-echo 完了しました！
+echo Finish!
 pause > nul
 exit
