@@ -57,6 +57,69 @@ function Select-Folder(
       return $dialog.SelectedPath
     }
 }
+#処理を選択させるダイアログ出すよ
+function Select-Operation {
+    # アセンブリのロード
+    Add-Type -AssemblyName System.Windows.Forms
+    Add-Type -AssemblyName System.Drawing
+    # フォームを作る
+    $Form = New-Object System.Windows.Forms.Form
+    $Form.Size = New-Object System.Drawing.Size(300,260)
+    $Form.Text = "Select Operation"
+    $Form.StartPosition = "CenterScreen"
+    # 処理グループつくる
+    $MyGroupBox = New-Object System.Windows.Forms.GroupBox
+    $MyGroupBox.Location = New-Object System.Drawing.Point(10,10)
+    $MyGroupBox.size = New-Object System.Drawing.Size(125,100)
+    $MyGroupBox.text = "Operation"
+    # 処理グループの中のラジオボタンを作る
+    $RadioButton1 = New-Object System.Windows.Forms.RadioButton
+    $RadioButton1.Location = New-Object System.Drawing.Point(20,20)
+    $RadioButton1.size = New-Object System.Drawing.Size(80,30)
+    $RadioButton1.Checked = $True
+    $RadioButton1.Text = "Retrieveのみ"
+    $RadioButton2 = New-Object System.Windows.Forms.RadioButton
+    $RadioButton2.Location = New-Object System.Drawing.Point(20,60)
+    $RadioButton2.size = New-Object System.Drawing.Size(80,30)
+    $RadioButton2.Text = "全て"
+    # OKボタンを作る
+    $OKButton = new-object System.Windows.Forms.Button
+    $OKButton.Location = New-Object System.Drawing.Point(55,170)
+    $OKButton.Size = New-Object System.Drawing.Size(80,40)
+    $OKButton.Text = "OK"
+    $OKButton.DialogResult = "OK"
+    # キャンセルボタンを作る
+    $CancelButton = new-object System.Windows.Forms.Button
+    $CancelButton.Location = New-Object System.Drawing.Point(145,170)
+    $CancelButton.Size = New-Object System.Drawing.Size(80,40)
+    $CancelButton.Text = "キャンセル"
+    $CancelButton.DialogResult = "Cancel"
+    # グループにラジオボタンを入れる
+    $MyGroupBox.Controls.AddRange(@($Radiobutton1,$RadioButton2))
+    # フォームに各アイテムを入れる
+    $Form.Controls.AddRange(@($MyGroupBox,$OKButton,$CancelButton))
+    # Enterキー、Escキーと各ボタンの関連付け
+    $Form.AcceptButton = $OKButton
+    $Form.CancelButton = $CancelButton
+    # フォームをアクティブにする＝Topmost？
+    $Form.TopMost = $True
+    # フォームを表示させ、押されたボタンの結果を受け取る
+    $dialogResult = $Form.ShowDialog()
+    # ボタン押下による条件分岐
+    if ($dialogResult -eq "OK"){
+        # 性別の判定
+        if ($RadioButton1.Checked){
+            $Operate = "Retrieve"
+        }elseif ($RadioButton2.Checked){
+            $Operate = "All"
+        }
+    }else{
+        $Operate = "Abort"
+    }
+    return $Operate
+}
+
+
 #Meta側で削除されたファイルを探し出す
 function findDelete( $cloneFile, $clonePath, $metaPath ) {
     #force-appまでで変換しとく
@@ -73,6 +136,15 @@ function findDelete( $cloneFile, $clonePath, $metaPath ) {
 
 #logging start
 logging -msg "Start!"
+#処理を選択させてみる
+$Operate = Select-Operation
+
+#選択した処理によって実行するか決める、Abortはここで終わり
+if ( $Operate -eq "Abort" ) {
+    logging -msg "Abort!!!"
+    Exit
+}
+
 #DevHubに接続してSFDXプロジェクトに変換するまでやってみる、ほんとはDevHubから処理したいけどBATファイルなので無理。。。BATの中解析したけど無理。。。
 #package.xmlが存在することを確認する
 if( !(Test-Path "./package.xml") ) {
@@ -110,6 +182,12 @@ if( !(Test-Path "./force-app") ) {
 }
 #コンバートした結果のディレクトリを格納
 $metapath = (Convert-Path "./force-app")
+
+#選択した処理によって実行するか決める、Retrieveのみはここで終わり
+if ( $Operate -eq "Retrieve" ) {
+    logging -msg "Only Retrieve Completed!!"
+    Exit
+}
 
 #ダイアログ表示
 $clonepath = Select-Folder -$Description "クローンしたforce-appディレクトリを指定してください。"
