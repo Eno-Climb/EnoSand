@@ -1,5 +1,7 @@
 *.log
 *.zip
-objects/
+force-app/
 mdapipkg/
 .sfdx/
+.vscode/
+.vscode/settings.json
