@@ -139,8 +139,6 @@ logging -msg "Start!"
 #処理を選択させてみる
 $Operate = Select-Operation
 
-$Operate
-exit
 #選択した処理によって実行するか決める、Abortはここで終わり
 if ( $Operate -eq "Abort" ) {
     logging -msg "Abort!!!"
