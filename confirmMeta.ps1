@@ -70,17 +70,17 @@ function Select-Operation {
     # 処理グループつくる
     $MyGroupBox = New-Object System.Windows.Forms.GroupBox
     $MyGroupBox.Location = New-Object System.Drawing.Point(10,10)
-    $MyGroupBox.size = New-Object System.Drawing.Size(125,100)
+    $MyGroupBox.size = New-Object System.Drawing.Size(260,100)
     $MyGroupBox.text = "Operation"
     # 処理グループの中のラジオボタンを作る
     $RadioButton1 = New-Object System.Windows.Forms.RadioButton
     $RadioButton1.Location = New-Object System.Drawing.Point(20,20)
-    $RadioButton1.size = New-Object System.Drawing.Size(80,30)
+    $RadioButton1.size = New-Object System.Drawing.Size(100,30)
     $RadioButton1.Checked = $True
     $RadioButton1.Text = "Retrieveのみ"
     $RadioButton2 = New-Object System.Windows.Forms.RadioButton
     $RadioButton2.Location = New-Object System.Drawing.Point(20,60)
-    $RadioButton2.size = New-Object System.Drawing.Size(80,30)
+    $RadioButton2.size = New-Object System.Drawing.Size(100,30)
     $RadioButton2.Text = "全て"
     # OKボタンを作る
     $OKButton = new-object System.Windows.Forms.Button
@@ -139,6 +139,8 @@ logging -msg "Start!"
 #処理を選択させてみる
 $Operate = Select-Operation
 
+$Operate
+exit
 #選択した処理によって実行するか決める、Abortはここで終わり
 if ( $Operate -eq "Abort" ) {
     logging -msg "Abort!!!"
