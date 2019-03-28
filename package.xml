@@ -6,6 +6,16 @@
         <name>AppMenu</name>
     </types>
     <types>
+        <members>Billing__c.ApprovalProcessBilling</members>
+        <members>Case.ApprovalProcessCase</members>
+        <members>Opportunity.X01</members>
+        <members>ProjectExpense__c.ApprovalProcess_ProjectExpense</members>
+        <members>Project__c.ApprovalProcess_Project</members>
+        <members>Subcontract__c.ApprovalProcess_Subcontract</members>
+        <members>Workflow__c.ApprovalProcess_Hanyo</members>
+        <name>ApprovalProcess</name>
+    </types>
+    <types>
         <members>Case</members>
         <members>Lead</members>
         <name>AssignmentRules</name>
@@ -16,12 +26,8 @@
         <name>AutoResponseRules</name>
     </types>
     <types>
-        <members>Internal Zone</members>
+        <members>組織内のアイデア</members>
         <name>Community</name>
-    </types>
-    <types>
-        <members>CircleCI_Sample</members>
-        <name>ConnectedApp</name>
     </types>
     <types>
         <members>CustomLabels</members>
@@ -29,10 +35,8 @@
     </types>
     <types>
         <members>Account</members>
-        <members>AccountCleanInfo</members>
-        <members>AccountContactRelation</members>
+        <members>AccountBrand</members>
         <members>AccountContactRole</members>
-        <members>ActiveScratchOrg</members>
         <members>Activity</members>
         <members>Asset</members>
         <members>AssetRelationship</members>
@@ -41,18 +45,17 @@
         <members>CampaignMember</members>
         <members>Case</members>
         <members>CaseContactRole</members>
+        <members>ChannelProgram</members>
+        <members>ChannelProgramLevel</members>
+        <members>ChannelProgramMember</members>
         <members>ChatterActivity</members>
         <members>CollaborationGroup</members>
         <members>CollaborationGroupMember</members>
-        <members>ConsumptionRate</members>
-        <members>ConsumptionSchedule</members>
         <members>Contact</members>
-        <members>ContactCleanInfo</members>
         <members>ContactRequest</members>
         <members>ContentVersion</members>
         <members>Contract</members>
         <members>ContractContactRole</members>
-        <members>DandBCompany</members>
         <members>DuplicateRecordItem</members>
         <members>DuplicateRecordSet</members>
         <members>EmailMessage</members>
@@ -67,23 +70,25 @@
         <members>Idea</members>
         <members>Image</members>
         <members>Lead</members>
-        <members>LeadCleanInfo</members>
+        <members>LinkedArticle</members>
         <members>Macro</members>
         <members>MacroAction</members>
         <members>MacroInstruction</members>
-        <members>NamespaceRegistry</members>
+        <members>NetworkMember</members>
         <members>Opportunity</members>
         <members>OpportunityCompetitor</members>
         <members>OpportunityContactRole</members>
         <members>OpportunityLineItem</members>
         <members>Order</members>
         <members>OrderItem</members>
-        <members>OrgDeleteRequest</members>
+        <members>PartnerFundAllocation</members>
+        <members>PartnerFundClaim</members>
+        <members>PartnerFundRequest</members>
+        <members>PartnerMarketingBudget</members>
         <members>PartnerRole</members>
         <members>Pricebook2</members>
         <members>PricebookEntry</members>
         <members>Product2</members>
-        <members>ProductConsumptionSchedule</members>
         <members>QuickText</members>
         <members>Quote</members>
         <members>QuoteLineItem</members>
@@ -93,9 +98,9 @@
         <members>Scorecard</members>
         <members>ScorecardAssociation</members>
         <members>ScorecardMetric</members>
-        <members>ScratchOrgInfo</members>
         <members>Site</members>
         <members>SocialPersona</members>
+        <members>SocialPost</members>
         <members>Solution</members>
         <members>StreamActivityAccess</members>
         <members>StreamingChannel</members>
@@ -116,12 +121,217 @@
         <name>CustomObject</name>
     </types>
     <types>
-        <members>hoge__c-ja</members>
+        <members>Account-ja</members>
+        <members>AreaAnalytics__c-ja</members>
+        <members>Billing__c-ja</members>
+        <members>Bukken__c-ja</members>
+        <members>BulkInsertMaster__c-en_US</members>
+        <members>Case-ja</members>
+        <members>CatalogShow__c-ja</members>
+        <members>Catalog__c-ja</members>
+        <members>CommonSettings__c-ja</members>
+        <members>Contact-ja</members>
+        <members>ContractCustom__c-ja</members>
+        <members>DemoData__c-ja</members>
+        <members>EngagementHistoryDemo__c-ja</members>
+        <members>Equip__c-ja</members>
+        <members>FAQ__kav-ja</members>
+        <members>HolidayCalendar__c-ja</members>
+        <members>Jinzai__c-ja</members>
+        <members>Jisseki__c-ja</members>
+        <members>Lead-ja</members>
+        <members>MenuInfo__c-ja</members>
+        <members>MyLauncherMenuItem__c-ja</members>
+        <members>Opportunity-ja</members>
+        <members>OpportunityLineItem-ja</members>
+        <members>PardotCategoryScore__c-ja</members>
+        <members>ProjectExpense__c-ja</members>
+        <members>ProjectTask__c-ja</members>
+        <members>Project__c-ja</members>
+        <members>QuestionnaireDl__c-ja</members>
+        <members>Subcontract__c-ja</members>
+        <members>Uriage__c-ja</members>
+        <members>WebAdvertiseData__c-ja</members>
+        <members>WebToLead_fk_Setting__c-ja</members>
+        <members>WorkflowDetail__c-ja</members>
+        <members>Workflow__c-ja</members>
+        <members>gcss__ObjectSettings__c-ja</members>
+        <members>gcss__ObjectSettings__c-zh_CN</members>
+        <members>gcss__Permission__c-ja</members>
+        <members>gcss__Permission__c-zh_CN</members>
+        <members>gcss__RelatedViewSettings__c-ja</members>
+        <members>gcss__RelatedViewSettings__c-zh_CN</members>
+        <members>gcss__RelatedView__c-ja</members>
+        <members>gcss__RelatedView__c-zh_CN</members>
+        <members>gcss__SpreadsheetFeatures__mdt-ja</members>
+        <members>gcss__SpreadsheetFeatures__mdt-zh_CN</members>
+        <members>gcss__SpreadsheetPermission__c-ja</members>
+        <members>gcss__SpreadsheetPermission__c-zh_CN</members>
+        <members>gcss__ViewSettings__c-ja</members>
+        <members>gcss__ViewSettings__c-zh_CN</members>
+        <members>gcss__VisibleObject__c-ja</members>
+        <members>gcss__VisibleObject__c-zh_CN</members>
+        <members>gcss__WorkingColumnData__c-ja</members>
+        <members>gcss__WorkingColumnData__c-zh_CN</members>
+        <members>gcss__WorkingColumn__c-ja</members>
+        <members>gcss__WorkingColumn__c-zh_CN</members>
+        <members>gcss__Workspace__c-ja</members>
+        <members>gcss__Workspace__c-zh_CN</members>
+        <members>teamspirit__AtkAccessControlLog__c-ja</members>
+        <members>teamspirit__AtkApplyDetail__c-ja</members>
+        <members>teamspirit__AtkApply__c-ja</members>
+        <members>teamspirit__AtkApproverSet__c-ja</members>
+        <members>teamspirit__AtkCalendar__c-ja</members>
+        <members>teamspirit__AtkCardStatementLine__c-ja</members>
+        <members>teamspirit__AtkCommon__c-ja</members>
+        <members>teamspirit__AtkCommuterPass__c-ja</members>
+        <members>teamspirit__AtkConfigBase__c-ja</members>
+        <members>teamspirit__AtkConfig__c-ja</members>
+        <members>teamspirit__AtkDeptCoordinate__c-ja</members>
+        <members>teamspirit__AtkDeptMonth__c-ja</members>
+        <members>teamspirit__AtkDept__c-ja</members>
+        <members>teamspirit__AtkEmpApply__c-ja</members>
+        <members>teamspirit__AtkEmpCoordinate__c-ja</members>
+        <members>teamspirit__AtkEmpDay__c-ja</members>
+        <members>teamspirit__AtkEmpDeptHist__c-ja</members>
+        <members>teamspirit__AtkEmpEntry__c-ja</members>
+        <members>teamspirit__AtkEmpExpHist__c-ja</members>
+        <members>teamspirit__AtkEmpExp__c-ja</members>
+        <members>teamspirit__AtkEmpMonthCoordinate__c-ja</members>
+        <members>teamspirit__AtkEmpMonthImportBatch__c-ja</members>
+        <members>teamspirit__AtkEmpMonthImport__c-ja</members>
+        <members>teamspirit__AtkEmpMonth__c-ja</members>
+        <members>teamspirit__AtkEmpStockDetail__c-ja</members>
+        <members>teamspirit__AtkEmpStock__c-ja</members>
+        <members>teamspirit__AtkEmpTypeHoliday__c-ja</members>
+        <members>teamspirit__AtkEmpTypePattern__c-ja</members>
+        <members>teamspirit__AtkEmpTypeYuq__c-ja</members>
+        <members>teamspirit__AtkEmpType__c-ja</members>
+        <members>teamspirit__AtkEmpWorkCoordinate__c-ja</members>
+        <members>teamspirit__AtkEmpWorkImportBatch__c-ja</members>
+        <members>teamspirit__AtkEmpWorkImport__c-ja</members>
+        <members>teamspirit__AtkEmpWork__c-ja</members>
+        <members>teamspirit__AtkEmpYuqDetail__c-ja</members>
+        <members>teamspirit__AtkEmpYuq__c-ja</members>
+        <members>teamspirit__AtkEmp__c-ja</members>
+        <members>teamspirit__AtkExchangeApplyCoordinate__c-ja</members>
+        <members>teamspirit__AtkExchangeProvideBatch__c-ja</members>
+        <members>teamspirit__AtkExpApply__c-ja</members>
+        <members>teamspirit__AtkExpCancelApply__c-ja</members>
+        <members>teamspirit__AtkExpItem__c-ja</members>
+        <members>teamspirit__AtkExpPayment__c-ja</members>
+        <members>teamspirit__AtkExpPreApplyDay__c-ja</members>
+        <members>teamspirit__AtkExpPreApply__c-ja</members>
+        <members>teamspirit__AtkExt__c-ja</members>
+        <members>teamspirit__AtkExtemp__c-ja</members>
+        <members>teamspirit__AtkForeignCurrency__c-ja</members>
+        <members>teamspirit__AtkHoliday__c-ja</members>
+        <members>teamspirit__AtkICCard__c-ja</members>
+        <members>teamspirit__AtkInfo__c-ja</members>
+        <members>teamspirit__AtkJobApply__c-ja</members>
+        <members>teamspirit__AtkJobAssign__c-ja</members>
+        <members>teamspirit__AtkJobCoordinate__c-ja</members>
+        <members>teamspirit__AtkJob__c-ja</members>
+        <members>teamspirit__AtkJournalDetail__c-ja</members>
+        <members>teamspirit__AtkJournal__c-ja</members>
+        <members>teamspirit__AtkJsNaviActual__c-ja</members>
+        <members>teamspirit__AtkJsNaviInvoice__c-ja</members>
+        <members>teamspirit__AtkJsNaviReserve__c-ja</members>
+        <members>teamspirit__AtkOffice__c-ja</members>
+        <members>teamspirit__AtkPattern__c-ja</members>
+        <members>teamspirit__AtkPayee__c-ja</members>
+        <members>teamspirit__AtkShop__c-ja</members>
+        <members>teamspirit__AtkStockProvideBatch__c-ja</members>
+        <members>teamspirit__AtkTempFile__c-ja</members>
+        <members>teamspirit__AtkYuqProvideBatch__c-ja</members>
+        <members>teamspirit__AtkYuqProvideData__c-ja</members>
+        <members>teamspirit__AtkYuqProvideDetail__c-ja</members>
+        <members>teamspirit__AtkZGAccount__c-ja</members>
+        <members>teamspirit__ExternalAttendance__c-ja</members>
+        <members>teamspirit__ExternalICExpense__c-ja</members>
+        <members>teamspirit__TemChangeEmployee__c-ja</members>
+        <members>teamspirit__TemRequestEvent__c-ja</members>
+        <members>teamspirit__TxsLog__c-ja</members>
+        <members>tsl__EiEmp__c-ja</members>
+        <members>tsl__EiFamily__c-ja</members>
+        <members>tsl__EiHealthCheck__c-ja</members>
+        <members>tsl__EiInterview__c-ja</members>
+        <members>tsl__EiQualification__c-ja</members>
+        <members>tsl__EiTempRetirement__c-ja</members>
+        <members>tsl__EiTempTransfer__c-ja</members>
+        <members>tsl__EidEmpBaseInfo__c-ja</members>
+        <members>tsl__EidEmpInfoView__c-ja</members>
+        <members>tsl__EidEmpInfo__c-ja</members>
+        <members>tsl__EidEvaluationInfo__c-ja</members>
+        <members>tsl__EidFamily__c-ja</members>
+        <members>tsl__EidInterviewTalk__c-ja</members>
+        <members>tsl__EidQualificationInfo__c-ja</members>
+        <members>tsl__EidSalaryTransitionInfo__c-ja</members>
+        <members>tsl__EidTemporaryRetirementInfo__c-ja</members>
+        <members>tsl__EidWorkExperience__c-ja</members>
+        <members>tsl__PcConfig__c-ja</members>
+        <members>tsl__PcExpenseResultImportDetail__c-ja</members>
+        <members>tsl__PcExpenseResultImport__c-ja</members>
+        <members>tsl__PcExpenseResult__c-ja</members>
+        <members>tsl__PcManHourResult__c-ja</members>
+        <members>tsl__PcProjectApply__c-ja</members>
+        <members>tsl__PcProjectDetail__c-ja</members>
+        <members>tsl__PcProjectHistory__c-ja</members>
+        <members>tsl__PcProject__c-ja</members>
+        <members>tsl__PcResourceRank__c-ja</members>
+        <members>tsl__PcResource__c-ja</members>
+        <members>tsl__PcWorkItemDetail__c-ja</members>
+        <members>tsl__PcWorkItem__c-ja</members>
         <name>CustomObjectTranslation</name>
+    </types>
+    <types>
+        <members>Napili</members>
+        <members>Napili_2</members>
+        <members>Site</members>
+        <members>Site4</members>
+        <members>SiteForDemo</members>
+        <name>CustomSite</name>
+    </types>
+    <types>
+        <members>FAQ</members>
+        <name>DataCategoryGroup</name>
+    </types>
+    <types>
+        <members>EmailToCase</members>
+        <members>EmailToSalesforce</members>
+        <name>EmailServicesFunction</name>
     </types>
     <types>
         <members>Case</members>
         <name>EscalationRules</name>
+    </types>
+    <types>
+        <members>AllOrgUsers</members>
+        <name>Group</name>
+    </types>
+    <types>
+        <members>OIQ</members>
+        <members>SIQCloud</members>
+        <members>gcss</members>
+        <members>mule</members>
+        <members>relateiq</members>
+        <members>sf_chttr_apps</members>
+        <members>sf_com_apps</members>
+        <members>skay_dcc</members>
+        <members>teamspirit</members>
+        <members>tsl</members>
+        <name>InstalledPackage</name>
+    </types>
+    <types>
+        <members>LeadConvertSettings</members>
+        <name>LeadConvertSettings</name>
+    </types>
+    <types>
+        <members>Napiliコミュニティ</members>
+        <members>Napiliコミュニティ2</members>
+        <members>カスタマーコミュニティ</members>
+        <members>パートナーコミュニティ</members>
+        <name>ManagedTopics</name>
     </types>
     <types>
         <members>Account</members>
@@ -130,64 +340,98 @@
         <name>MatchingRules</name>
     </types>
     <types>
+        <members>Napiliコミュニティ</members>
+        <members>Napiliコミュニティ2</members>
+        <members>カスタマーコミュニティ</members>
+        <members>パートナーコミュニティ</members>
+        <name>Network</name>
+    </types>
+    <types>
+        <members>cbNapili</members>
+        <members>cbNapili_2</members>
+        <members>cbSite</members>
+        <members>cbSite2</members>
+        <name>NetworkBranding</name>
+    </types>
+    <types>
+        <members>カスタマーポータル</members>
+        <name>Portal</name>
+    </types>
+    <types>
+        <members>Opportunity.OppsApprovalTemplete</members>
+        <name>PostTemplate</name>
+    </types>
+    <types>
         <members>Admin</members>
         <members>Analytics Cloud Integration User</members>
         <members>Analytics Cloud Security User</members>
-        <members>Authenticated Website</members>
         <members>Chatter External User</members>
         <members>Chatter Free User</members>
         <members>Chatter Moderator User</members>
+        <members>Chatter Only User</members>
+        <members>Company Communities User</members>
         <members>ContractManager</members>
-        <members>Cross Org Data Proxy User</members>
-        <members>Custom%3A Marketing Profile</members>
-        <members>Custom%3A Sales Profile</members>
-        <members>Custom%3A Support Profile</members>
         <members>Customer Community Login User</members>
+        <members>Customer Community Login User Copy %28Login%29</members>
         <members>Customer Community Plus Login User</members>
         <members>Customer Community Plus User</members>
+        <members>Customer Community Plus User %28Member%29</members>
         <members>Customer Community User</members>
-        <members>Customer Portal Manager Custom</members>
-        <members>Customer Portal Manager Standard</members>
-        <members>Example1</members>
+        <members>Customer Community User Copy %28Member%29</members>
+        <members>External Apps User</members>
+        <members>External Apps User Copy</members>
         <members>External Identity User</members>
         <members>Force%2Ecom - App Subscription User</members>
-        <members>Force%2Ecom - Free User</members>
-        <members>Gold Partner User</members>
-        <members>High Volume Customer Portal User</members>
-        <members>HighVolumePortal</members>
-        <members>Identity User</members>
+        <members>Force%2Ecomユーザ_カスタム</members>
+        <members>Guest</members>
+        <members>Guest License User</members>
+        <members>Knowledge Only User</members>
         <members>MarketingProfile</members>
-        <members>Partner App Subscription User</members>
+        <members>Napiliコミュニティ プロファイル</members>
+        <members>Napiliコミュニティ2 プロファイル</members>
         <members>Partner Community Login User</members>
+        <members>Partner Community Login User Copy %28Login%29</members>
         <members>Partner Community User</members>
-        <members>PlatformPortal</members>
+        <members>Partner Community User Copy %28Member%29</members>
         <members>ReadOnly</members>
-        <members>Silver Partner User</members>
+        <members>SalesforceIQ Integration User</members>
+        <members>Service Cloud User</members>
+        <members>ServiceCloud</members>
         <members>SolutionManager</members>
         <members>Standard</members>
-        <members>StandardAul</members>
         <members>Work%2Ecom Only User</members>
+        <members>カスタマーコミュニティ プロファイル</members>
+        <members>サポート担当</members>
+        <members>デモ用公開Site プロファイル</members>
+        <members>パートナーコミュニティ プロファイル</members>
+        <members>営業担当</members>
+        <members>技術担当</members>
+        <members>経理担当</members>
         <name>Profile</name>
     </types>
     <types>
-        <members>CEO</members>
-        <members>CFO</members>
-        <members>COO</members>
-        <members>ChannelSalesTeam</members>
-        <members>CustomerSupportInternational</members>
-        <members>CustomerSupportNorthAmerica</members>
-        <members>DirectorChannelSales</members>
-        <members>DirectorDirectSales</members>
-        <members>EasternSalesTeam</members>
-        <members>InstallationRepairServices</members>
-        <members>MarketingTeam</members>
-        <members>SVPCustomerServiceSupport</members>
-        <members>SVPHumanResources</members>
-        <members>SVPSalesMarketing</members>
-        <members>VPInternationalSales</members>
-        <members>VPMarketing</members>
-        <members>VPNorthAmericanSales</members>
-        <members>WesternSalesTeam</members>
+        <members>LeadQueue</members>
+        <members>SupportQue</members>
+        <name>Queue</name>
+    </types>
+    <types>
+        <members>Account</members>
+        <members>DeveloperName70569</members>
+        <members>DeveloperName705697130810</members>
+        <members>DeveloperName705697130811</members>
+        <members>DeveloperName705697130812</members>
+        <members>DeveloperName70569713087</members>
+        <members>DeveloperName70569713088</members>
+        <members>DeveloperName70569713089</members>
+        <members>Development</members>
+        <members>Development1</members>
+        <members>Development2</members>
+        <members>EaseSales3</members>
+        <members>HR</members>
+        <members>MarketingManager</members>
+        <members>PartnerUser</members>
+        <members>PartnerUser1</members>
+        <members>SupportManager</members>
         <name>Role</name>
     </types>
     <types>
@@ -198,14 +442,10 @@
         <members>Case</members>
         <members>Company</members>
         <members>Contract</members>
-        <members>Entitlement</members>
-        <members>FieldService</members>
         <members>FileUploadAndDownloadSecurity</members>
         <members>Forecasting</members>
         <members>Ideas</members>
-        <members>IoT</members>
         <members>Knowledge</members>
-        <members>LiveAgent</members>
         <members>Macro</members>
         <members>Mobile</members>
         <members>Name</members>
@@ -218,6 +458,7 @@
         <members>Quote</members>
         <members>Search</members>
         <members>Security</members>
+        <members>SocialCustomerService</members>
         <name>Settings</name>
     </types>
     <types>
@@ -225,31 +466,201 @@
         <members>Asset</members>
         <members>Campaign</members>
         <members>Case</members>
+        <members>ChannelProgram</members>
         <members>Contact</members>
         <members>FlowInterview</members>
         <members>Lead</members>
         <members>ListEmail</members>
         <members>Opportunity</members>
         <members>Order</members>
+        <members>PartnerFundAllocation</members>
+        <members>PartnerFundClaim</members>
+        <members>PartnerFundRequest</members>
+        <members>PartnerMarketingBudget</members>
         <members>User</members>
         <name>SharingRules</name>
     </types>
     <types>
+        <members>External_Apps_SharingRule</members>
+        <members>SharingSetForCC</members>
+        <name>SharingSet</name>
+    </types>
+    <types>
+        <members>C</members>
+        <members>Napili1</members>
+        <members>Napili_21</members>
+        <members>Site1</members>
+        <name>SiteDotCom</name>
+    </types>
+    <types>
         <members>Account</members>
+        <members>AreaAnalytics__c</members>
         <members>Asset</members>
+        <members>Billing__c</members>
+        <members>Bukken__c</members>
+        <members>BulkInsertMaster__c</members>
         <members>Campaign</members>
         <members>Case</members>
+        <members>CatalogShow__c</members>
+        <members>Catalog__c</members>
+        <members>ChannelProgram</members>
+        <members>ChannelProgramLevel</members>
         <members>Contact</members>
         <members>ContentDocument</members>
         <members>Contract</members>
+        <members>ContractCustom__c</members>
+        <members>DemoData__c</members>
+        <members>EngagementHistoryDemo__c</members>
+        <members>Equip__c</members>
         <members>Event</members>
+        <members>FAQ__kav</members>
+        <members>HolidayCalendar__c</members>
+        <members>Jinzai__c</members>
+        <members>Jisseki__c</members>
         <members>Lead</members>
+        <members>LinkedArticle</members>
+        <members>MenuInfo__c</members>
+        <members>MyLauncherMenuItem__c</members>
         <members>Opportunity</members>
         <members>Order</members>
+        <members>PardotCategoryScore__c</members>
+        <members>PartnerFundAllocation</members>
+        <members>PartnerFundClaim</members>
+        <members>PartnerFundRequest</members>
+        <members>PartnerMarketingBudget</members>
+        <members>ProjectExpense__c</members>
+        <members>ProjectTask__c</members>
+        <members>Project__c</members>
+        <members>QuestionnaireDl__c</members>
         <members>Solution</members>
+        <members>Subcontract__c</members>
         <members>Task</members>
-        <members>hoge__c</members>
+        <members>Uriage__c</members>
+        <members>WebAdvertiseData__c</members>
+        <members>WorkflowDetail__c</members>
+        <members>Workflow__c</members>
+        <members>gcss__ObjectSettings__c</members>
+        <members>gcss__Permission__c</members>
+        <members>gcss__RelatedViewSettings__c</members>
+        <members>gcss__RelatedView__c</members>
+        <members>gcss__SpreadsheetPermission__c</members>
+        <members>gcss__ViewSettings__c</members>
+        <members>gcss__VisibleObject__c</members>
+        <members>gcss__WorkingColumnData__c</members>
+        <members>gcss__WorkingColumn__c</members>
+        <members>gcss__Workspace__c</members>
+        <members>teamspirit__AtkAccessControlLog__c</members>
+        <members>teamspirit__AtkApplyDetail__c</members>
+        <members>teamspirit__AtkApply__c</members>
+        <members>teamspirit__AtkApproverSet__c</members>
+        <members>teamspirit__AtkCalendar__c</members>
+        <members>teamspirit__AtkCardStatementLine__c</members>
+        <members>teamspirit__AtkCommon__c</members>
+        <members>teamspirit__AtkCommuterPass__c</members>
+        <members>teamspirit__AtkConfigBase__c</members>
+        <members>teamspirit__AtkConfig__c</members>
+        <members>teamspirit__AtkDeptCoordinate__c</members>
+        <members>teamspirit__AtkDeptMonth__c</members>
+        <members>teamspirit__AtkDept__c</members>
+        <members>teamspirit__AtkEmpApply__c</members>
+        <members>teamspirit__AtkEmpCoordinate__c</members>
+        <members>teamspirit__AtkEmpDay__c</members>
+        <members>teamspirit__AtkEmpDeptHist__c</members>
+        <members>teamspirit__AtkEmpEntry__c</members>
+        <members>teamspirit__AtkEmpExpHist__c</members>
+        <members>teamspirit__AtkEmpExp__c</members>
+        <members>teamspirit__AtkEmpMonthCoordinate__c</members>
+        <members>teamspirit__AtkEmpMonthImportBatch__c</members>
+        <members>teamspirit__AtkEmpMonthImport__c</members>
+        <members>teamspirit__AtkEmpMonth__c</members>
+        <members>teamspirit__AtkEmpStockDetail__c</members>
+        <members>teamspirit__AtkEmpStock__c</members>
+        <members>teamspirit__AtkEmpTypeHoliday__c</members>
+        <members>teamspirit__AtkEmpTypePattern__c</members>
+        <members>teamspirit__AtkEmpTypeYuq__c</members>
+        <members>teamspirit__AtkEmpType__c</members>
+        <members>teamspirit__AtkEmpWorkCoordinate__c</members>
+        <members>teamspirit__AtkEmpWorkImportBatch__c</members>
+        <members>teamspirit__AtkEmpWorkImport__c</members>
+        <members>teamspirit__AtkEmpWork__c</members>
+        <members>teamspirit__AtkEmpYuqDetail__c</members>
+        <members>teamspirit__AtkEmpYuq__c</members>
+        <members>teamspirit__AtkEmp__c</members>
+        <members>teamspirit__AtkExchangeApplyCoordinate__c</members>
+        <members>teamspirit__AtkExchangeProvideBatch__c</members>
+        <members>teamspirit__AtkExpApply__c</members>
+        <members>teamspirit__AtkExpCancelApply__c</members>
+        <members>teamspirit__AtkExpItem__c</members>
+        <members>teamspirit__AtkExpPayment__c</members>
+        <members>teamspirit__AtkExpPreApplyDay__c</members>
+        <members>teamspirit__AtkExpPreApply__c</members>
+        <members>teamspirit__AtkExt__c</members>
+        <members>teamspirit__AtkExtemp__c</members>
+        <members>teamspirit__AtkForeignCurrency__c</members>
+        <members>teamspirit__AtkHoliday__c</members>
+        <members>teamspirit__AtkICCard__c</members>
+        <members>teamspirit__AtkInfo__c</members>
+        <members>teamspirit__AtkJobApply__c</members>
+        <members>teamspirit__AtkJobAssign__c</members>
+        <members>teamspirit__AtkJobCoordinate__c</members>
+        <members>teamspirit__AtkJob__c</members>
+        <members>teamspirit__AtkJournalDetail__c</members>
+        <members>teamspirit__AtkJournal__c</members>
+        <members>teamspirit__AtkJsNaviActual__c</members>
+        <members>teamspirit__AtkJsNaviInvoice__c</members>
+        <members>teamspirit__AtkJsNaviReserve__c</members>
+        <members>teamspirit__AtkOffice__c</members>
+        <members>teamspirit__AtkPattern__c</members>
+        <members>teamspirit__AtkPayee__c</members>
+        <members>teamspirit__AtkShop__c</members>
+        <members>teamspirit__AtkStockProvideBatch__c</members>
+        <members>teamspirit__AtkTempFile__c</members>
+        <members>teamspirit__AtkYuqProvideBatch__c</members>
+        <members>teamspirit__AtkYuqProvideData__c</members>
+        <members>teamspirit__AtkYuqProvideDetail__c</members>
+        <members>teamspirit__AtkZGAccount__c</members>
+        <members>teamspirit__ExternalAttendance__c</members>
+        <members>teamspirit__ExternalICExpense__c</members>
+        <members>teamspirit__TemChangeEmployee__c</members>
+        <members>teamspirit__TemRequestEvent__c</members>
+        <members>teamspirit__TxsLog__c</members>
+        <members>tsl__EiEmp__c</members>
+        <members>tsl__EiFamily__c</members>
+        <members>tsl__EiHealthCheck__c</members>
+        <members>tsl__EiInterview__c</members>
+        <members>tsl__EiQualification__c</members>
+        <members>tsl__EiTempRetirement__c</members>
+        <members>tsl__EiTempTransfer__c</members>
+        <members>tsl__EidEmpBaseInfo__c</members>
+        <members>tsl__EidEmpInfoView__c</members>
+        <members>tsl__EidEmpInfo__c</members>
+        <members>tsl__EidEvaluationInfo__c</members>
+        <members>tsl__EidFamily__c</members>
+        <members>tsl__EidInterviewTalk__c</members>
+        <members>tsl__EidQualificationInfo__c</members>
+        <members>tsl__EidSalaryTransitionInfo__c</members>
+        <members>tsl__EidTemporaryRetirementInfo__c</members>
+        <members>tsl__EidWorkExperience__c</members>
+        <members>tsl__PcConfig__c</members>
+        <members>tsl__PcExpenseResultImportDetail__c</members>
+        <members>tsl__PcExpenseResultImport__c</members>
+        <members>tsl__PcExpenseResult__c</members>
+        <members>tsl__PcManHourResult__c</members>
+        <members>tsl__PcProjectApply__c</members>
+        <members>tsl__PcProjectDetail__c</members>
+        <members>tsl__PcProjectHistory__c</members>
+        <members>tsl__PcProject__c</members>
+        <members>tsl__PcResourceRank__c</members>
+        <members>tsl__PcResource__c</members>
+        <members>tsl__PcWorkItemDetail__c</members>
+        <members>tsl__PcWorkItem__c</members>
         <name>TopicsForObjects</name>
+    </types>
+    <types>
+        <members>Case</members>
+        <members>Event</members>
+        <members>Opportunity</members>
+        <name>Workflow</name>
     </types>
     <version>45.0</version>
 </Package>
